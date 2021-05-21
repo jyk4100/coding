@@ -1,0 +1,14 @@
+## ignore
+## py
+__pycache__/
+.ipynb_checkpoints
+.env
+.venv
+env/
+
+## R
+.Rhistory
+.RDS
+
+## dir
+/2020-Q1
