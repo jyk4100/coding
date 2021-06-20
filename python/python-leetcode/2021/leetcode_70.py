@@ -16,8 +16,6 @@ import math
 [dpfibo(x) for x in range(3,20)]
 [badfibo(x) for x in range(1,20)]
 
-
-
 ## zzz brute force 
 def badfibo(n):
     # itr = math.floor(math.log(n, 2)) + 1
