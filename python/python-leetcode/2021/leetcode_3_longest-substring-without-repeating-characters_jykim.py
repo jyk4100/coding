@@ -1,10 +1,17 @@
 ## leetcode 3 longest substring without repeating characters
-## jyk4100 last modified: 2021-06-20
+## https://leetcode.com/problems/longest-substring-without-repeating-characters/
+## jyk4100
+## last modified: 2021-06-20
 
-s = "abcabcbb"
-s = "pwwkew"
-s = "dvdf"
-s = "abba"
+## want to "slide window" and jump characters we already know are unique
+## e.g. s = "abcabcbb"
+## i=0 ~ i=2 add a, b, c, respectively
+## cmap = {a:0, b:1, c:2} sub_start=0, max=3
+## i=3, a is duplicated and "previously" a was at index 0 which is after our substr begin
+## substring from 0+1 to i
+## i=5
+## cmap = {a:3, b:4, c:5} sub_start=3, max=3
+## i=6, cmap[b] = 4 >= sub_start -> sub_start = 5
 
 def longest_unique_sub(s):
     cmap = dict()
@@ -24,22 +31,14 @@ def longest_unique_sub(s):
             max_len = max(max_len, i+1-sub_start)
             print(max_len)
     return(max_len)
-longest_unique_sub('abba')
-longest_unique_sub('dvdf')
 
-# s = 'abcabcbb'
-# l = 0
-# mm = 0
-# for i in range(len(s)):
-#     while s[i] in charset:
-#         print(i)
-#         charset.remove(s[i])
-#         l = l + 1
-#         print(l, charset)
-#     charset.add(s[i])
-#     mm = max(mm, i - l + 1)
+longest_unique_sub('abcabcbb')
+longest_unique_sub('pwwkew')
+longest_unique_sub('dvdf')
+longest_unique_sub('abba')
 
 ## prac and struggles --------------------------------------------------------
+## when to jump?
 def prac1(s):
     if len(s) == 0:
         return(0)
@@ -52,18 +51,18 @@ def prac1(s):
         print( "itr:{}, next char:{}, charset:{}".format(i, nxt_char, charset))
         if nxt_char in charset:
             s = s[1:]
-            # charset = set()
-            # charset.update(s[0:1])
+            charset = set()
+            charset.update(s[0:1])
             charset = s[0:1]
             mymax = max(len(charset), mymax)
-            print( "   1 sub:{}, s:{}".format(charset, s))
+            print("case 1 sub:{}, s:{}".format(charset, s))
         else: 
             charset.add(nxt_char)
             mymax = max(len(charset), mymax)
-            print( "   2 sub:{}, s:{}".format(charset, s))
+            print("case 2 sub:{}, s:{}".format(charset, s))
     return(charset, mymax)
 
-## fufu 
+## ggwp2
 def prac2(s):
     if len(s) == 0:
         return(0)
