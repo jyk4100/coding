@@ -3,10 +3,8 @@
 ## jyk4100
 ## last modified: 2021-06-30
 
-strs = ["flower", "flo2w", "flower2", "flow2"]
 strs = ["flower","flow","flight"]
 strs = ["dog","racecar","car"]
-strs = ['flower','flower','flower']
 strs = ['flower','flower','flower']
 strs = ['']
 strs = ['a']
@@ -14,7 +12,7 @@ strs = ['','']
 strs = ["abab","aba",""]
 
 ## basically brute-force compare one string by one but tried to exist/break asap
-def longestCommonPrefix(self, strs: List[str]) -> str:
+def longestCommonPrefix(strs):
     ## omg edge cases
     strs.sort()
     if len(strs) <= 1 or any([x == '' for x in strs]):
@@ -28,8 +26,7 @@ def longestCommonPrefix(self, strs: List[str]) -> str:
                     break
                 else:
                     check = check + 1
-                    # print(strs)
-
+                    print(strs)
             if check == (len(strs)-1):
                 check = 0
                 k = k + 1
@@ -37,6 +34,7 @@ def longestCommonPrefix(self, strs: List[str]) -> str:
                 break
         return strs[0][0:k]
 
+longestCommonPrefix(strs)
 
 ## "do-while" doesn't work with edge cases like
 # def longestCommonPrefix(self, strs: List[str]) -> str:
